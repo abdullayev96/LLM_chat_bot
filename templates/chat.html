@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>PowerFit Gym Chat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+<!--    .chat-container {-->
+<!--      background: #fff;-->
+<!--      padding: 20px;-->
+<!--      border-radius: 12px;-->
+<!--      width: 420px;-->
+<!--      box-shadow: 0 6px 15px rgba(0,0,0,0.2);-->
+<!--      display: flex;-->
+<!--      flex-direction: column;-->
+<!--    }-->
+
+    .chat-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 420px; /* katta ekranlarda 420px gacha */
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    .chat-box {
+      flex: 1;
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 10px;
+      overflow-y: auto;
+      max-height: 400px;
+      margin-bottom: 15px;
+    }
+
+    .message {
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background-color: #3498db;
+      color: #fff;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .bot {
+      background-color: #ecf0f1;
+      color: #2c3e50;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 8px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+  <div class="chat-container">
+    <h2>PowerFit Gym Chat</h2>
+    <div class="chat-box" id="chat-box">
+      <div class="message bot">👋 Salom! Savolingizni yozing.</div>
+    </div>
+    <div class="input-area">
+      <input type="text" id="msg" placeholder="Savolingizni yozing..." onkeypress="if(event.key==='Enter'){sendMsg()}">
+      <button onclick="sendMsg()">Yuborish</button>
+    </div>
+  </div>
+
+  <script>
+    async function sendMsg() {
+      let msgBox = document.getElementById("msg");
+      let message = msgBox.value.trim();
+      if (!message) return;
+
+      // Foydalanuvchi xabarini chiqarish
+      addMessage(message, "user");
+
+      // API ga yuborish
+      let response = await fetch("/api/gym-llm/", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({message: message})
+      });
+      let data = await response.json();
+
+      // Bot javobini chiqarish
+      addMessage(data.reply, "bot");
+
+      msgBox.value = "";
+    }
+
+    function addMessage(text, sender) {
+      let chatBox = document.getElementById("chat-box");
+      let msgDiv = document.createElement("div");
+      msgDiv.className = "message " + sender;
+      msgDiv.innerText = text;
+      chatBox.appendChild(msgDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="uz">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>PowerFit Gym Chat</title>-->
+<!--  <style>-->
+<!--    body {-->
+<!--      font-family: Arial, sans-serif;-->
+<!--      background: linear-gradient(135deg, #2c3e50, #3498db);-->
+<!--      display: flex;-->
+<!--      justify-content: center;-->
+<!--      align-items: center;-->
+<!--      height: 100vh;-->
+<!--      margin: 0;-->
+<!--    }-->
+
+<!--    .chat-container {-->
+<!--      background: #fff;-->
+<!--      padding: 25px;-->
+<!--      border-radius: 12px;-->
+<!--      width: 400px;-->
+<!--      box-shadow: 0 6px 15px rgba(0,0,0,0.2);-->
+<!--      text-align: center;-->
+<!--    }-->
+
+<!--    h2 {-->
+<!--      margin-bottom: 15px;-->
+<!--      color: #2c3e50;-->
+<!--    }-->
+
+<!--    input[type="text"] {-->
+<!--      width: 80%;-->
+<!--      padding: 10px;-->
+<!--      border-radius: 8px;-->
+<!--      border: 1px solid #ccc;-->
+<!--      margin-right: 5px;-->
+<!--      font-size: 14px;-->
+<!--    }-->
+
+<!--    button {-->
+<!--      padding: 10px 16px;-->
+<!--      border: none;-->
+<!--      border-radius: 8px;-->
+<!--      background-color: #3498db;-->
+<!--      color: white;-->
+<!--      cursor: pointer;-->
+<!--      font-size: 14px;-->
+<!--      transition: 0.3s;-->
+<!--    }-->
+
+<!--    button:hover {-->
+<!--      background-color: #2980b9;-->
+<!--    }-->
+
+<!--    #reply {-->
+<!--      margin-top: 20px;-->
+<!--      background: #ecf0f1;-->
+<!--      padding: 15px;-->
+<!--      border-radius: 8px;-->
+<!--      min-height: 40px;-->
+<!--      text-align: left;-->
+<!--      font-size: 14px;-->
+<!--      color: #2c3e50;-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--  <div class="chat-container">-->
+<!--    <h2>PowerFit Gym Chat</h2>-->
+<!--    <div>-->
+<!--      <input type="text" id="msg" placeholder="Savolingizni yozing...">-->
+<!--      <button onclick="sendMsg()">Yuborish</button>-->
+<!--    </div>-->
+<!--    <p id="reply">👋 Salom! Savolingizni yozing.</p>-->
+<!--  </div>-->
+
+<!--  <script>-->
+<!--    async function sendMsg() {-->
+<!--      let message = document.getElementById("msg").value;-->
+<!--      if (!message) return;-->
+<!--      let response = await fetch("/api/gym-llm/", {-->
+<!--        method: "POST",-->
+<!--        headers: {"Content-Type": "application/json"},-->
+<!--        body: JSON.stringify({message: message})-->
+<!--      });-->
+<!--      let data = await response.json();-->
+<!--      document.getElementById("reply").innerText = data.reply;-->
+<!--      document.getElementById("msg").value = "";-->
+<!--    }-->
+<!--  </script>-->
+<!--</body>-->
+<!--</html>-->
