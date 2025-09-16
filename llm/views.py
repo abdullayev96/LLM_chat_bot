@@ -16,23 +16,21 @@ def gym_chat_page(request):
 
 
 SYSTEM_PROMPT = """
-Siz "PowerFit Gym" sport zalining virtual menejerisiz. 
-Sizning vazifangiz mijozlarga sport zali haqida barcha kerakli ma’lumotlarni tushunarli, do‘stona va professional tarzda berishdir. 
+👋 Salom! Men — PowerFit Gym’ning virtual yordamchisiman. 
+Sizga quyidagi savollarda yordam bera olaman:
+- 📋 Abonement narxlari va chegirmalar
+- 🏋️‍♂️ Xizmatlar va mavjud jihozlar
+- 👨‍🏫 Murabbiylar va mashg‘ulot jadvali
+- 🕒 Ish vaqti va band qilish
+- 📍 Manzil va kontakt ma’lumotlar
+- 🧒 Bolalar mashg‘ulotlari
+- 💳 To‘lov usullari
+- 🏊 Sauna, hovuz va VIP xizmatlar
 
-Siz quyidagi mavzularda yordam bera olasiz:
-- Obuna (abonement) turlari, narxlar, chegirmalar.
-- Mashg‘ulotlar jadvali (gruppa mashg‘ulotlari, individual mashg‘ulotlar).
-- Trenerlar haqida ma’lumot, ularning tajribasi va yo‘nalishi.
-- Sport zalining manzili, ish vaqti, telefon raqami, ijtimoiy tarmoqlari.
-- Jihozlar (trenajorlar), sauna, hovuz va boshqa qo‘shimcha xizmatlar.
-- Yangi boshlovchilar uchun maslahatlar: qaysi mashqlarni boshlash kerak, ovqatlanish bo‘yicha umumiy tavsiyalar.
+❓ Siz meni istalgan payt **abonement**, **murabbiy**, **manzil**, **xizmat**, **chegirma** yoki boshqa kalit so‘zlar bilan so‘rashingiz mumkin. 
 
-Qoidalar:
-- Har doim foydalanuvchiga samimiy va qo‘llab-quvvatlovchi ohangda javob bering.
-- Agar foydalanuvchi mavzudan tashqarida savol bersa (masalan, boshqa dasturlar, texnik savollar), muloyimlik bilan "Men faqat PowerFit Gym haqida ma’lumot bera olaman" deb ayting.
-- Javoblarni imkon qadar qisqa va aniq bering, kerak bo‘lsa, qo‘shimcha savol bilan foydalanuvchini yo‘naltiring.
+Men sizga tez va aniq javob berishga harakat qilaman. 🙂
 """
-
 
 
 class GymLLMView(APIView):
@@ -73,6 +71,17 @@ class GymLLMView(APIView):
                 "- Anna Lee (Yoga va Pilates) → Dush–Shanba 10:00–18:00\n"
                 "- Mike Johnson (Boks va Kardio) → Ses–Yakshanba 12:00–20:00\n\n"
                 "👉 Qaysi murabbiy bilan shug‘ullanishni xohlaysiz? Men siz uchun bron qilishga yordam bera olaman."
+            )
+
+
+        elif any(word in user_message for word in [
+            "sen kimsan", "kim siz", "siz kimsiz",
+            "who are you", "who are u", "sen kimsan?"]):
+
+            reply = (
+                "👋 Men PowerFit Gym’ning virtual yordamchisiman.\n"
+                "Sizga abonementlar, xizmatlar, murabbiylar, ish vaqti, bron va to‘lovlar bo‘yicha yordam bera olaman.\n"
+                "Nimani bilmoqchisiz — narxlar, jadval yoki murabbiy haqida so‘raysizmi?"
             )
 
         elif any(word in user_message for word in ["vaqt", "ochiq", "hours", "ish vaqti"]):
