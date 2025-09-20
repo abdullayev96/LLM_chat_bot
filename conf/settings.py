@@ -146,13 +146,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
+#
+#
+# STATIC_ROOT = BASE_DIR / 'home'
+#
+# MEDIA_URL = "/media/"
+# MEDIA_ROOT = BASE_DIR / "media"
 
 
-STATIC_ROOT = BASE_DIR / 'home'
+STATIC_URL = '/static/'
+STATIC_ROOT = '/var/www/llm_chat_bot/static'
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/var/www/llm_chat_bot/media'
 
 
 # Default primary key field type
