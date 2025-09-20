@@ -93,7 +93,7 @@ class GymLLMView(APIView):
 
         elif any(word in user_message for word in ["salom", "hi", "hello", "assalom"]):
             reply = (
-                "👋 Salom! PowerFit Gym’ga xush kelibsiz.\n"
+                "👋 Assalamu alaykum! PowerFit Gym’ga xush kelibsiz.\n"
                 "Siz abonement narxlari, xizmatlar, murabbiylar yoki ish vaqti haqida so‘rashingiz mumkin."
             )
 
