@@ -16,7 +16,7 @@ def gym_chat_page(request):
 
 
 SYSTEM_PROMPT = """
-👋 Salom! Men — PowerFit Gym’ning virtual yordamchisiman. 
+👋 Assalamu alaykum! Men — PowerFit Gym’ning virtual yordamchisiman. 
 Sizga quyidagi savollarda yordam bera olaman:
 - 📋 Abonement narxlari va chegirmalar
 - 🏋️‍♂️ Xizmatlar va mavjud jihozlar
@@ -27,7 +27,7 @@ Sizga quyidagi savollarda yordam bera olaman:
 - 💳 To‘lov usullari
 - 🏊 Sauna, hovuz va VIP xizmatlar
 
-❓ Siz meni istalgan payt **abonement**, **murabbiy**, **manzil**, **xizmat**, **chegirma** yoki boshqa kalit so‘zlar bilan so‘rashingiz mumkin. 
+❓ Siz menga istalgan payt **abonement**, **murabbiy**, **manzil**, **xizmat**, **chegirma** yoki boshqa kalit so‘zlar bilan so‘rashingiz mumkin. 
 
 Men sizga tez va aniq javob berishga harakat qilaman. 🙂
 """
@@ -92,9 +92,22 @@ class GymLLMView(APIView):
             )
 
         elif any(word in user_message for word in ["salom", "hi", "hello", "assalom"]):
-            reply = (
-                "👋 Assalamu alaykum! PowerFit Gym’ga xush kelibsiz.\n"
-                "Siz abonement narxlari, xizmatlar, murabbiylar yoki ish vaqti haqida so‘rashingiz mumkin."
+            reply = ("""👋 Assalamu alaykum! Men — PowerFit Gym’ning virtual yordamchisiman.
+                Sizga quyidagi savollarda yordam bera olaman:
+                - 📋 Abonement narxlari va chegirmalar
+                - 🏋️‍♂️ Xizmatlar va mavjud jihozlar
+                - 👨‍🏫 Murabbiylar va mashg‘ulot jadvali
+                - 🕒 Ish vaqti va band qilish
+                - 📍 Manzil va kontakt ma’lumotlar
+                - 🧒 Bolalar mashg‘ulotlari
+                - 💳 To‘lov usullari
+                - 🏊 Sauna, hovuz va VIP xizmatlar
+
+                ❓ Siz menga istalgan paytda  abonement , ** murabbiy **, ** manzil **, ** xizmat **, ** chegirma ** yoki boshqa kalit so‘zlar bilan so‘rashingiz mumkin.
+
+                Men sizga tez va aniq javob berishga harakat qilaman.🙂"""
+
+
             )
 
 

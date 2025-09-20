@@ -64,5 +64,5 @@ jobs:
             python manage.py collectstatic --noinput
             
             # Serverni restart qilish
-            sudo systemctl restart gunicorn
+            sudo systemctl restart gunicorn1
             sudo systemctl restart nginx
