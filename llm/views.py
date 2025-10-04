@@ -91,7 +91,7 @@ class GymLLMView(APIView):
                 "👉 Siz qaysi vaqtda kelishni rejalashtiryapsiz?"
             )
 
-        elif any(word in user_message for word in ["salom", "hi", "hello", "assalom"]):
+        elif any(word in user_message for word in ["salom", "hi", "hello", "assalom", "qanday narsa bu", "vazifasi nima buni"]):
             reply = ("""👋 Assalamu alaykum! Men — PowerFit Gym’ning virtual yordamchisiman.
                 Sizga quyidagi savollarda yordam bera olaman:
                 - 📋 Abonement narxlari va chegirmalar
@@ -185,7 +185,7 @@ class GymLLMView(APIView):
                 "Darslar maxsus murabbiylar nazorati ostida o‘tkaziladi."
             )
 
-        elif any(word in user_message for word in ["to'lov", "payment", "karta", "naqd", "pul o'tkazma"]):
+        elif any(word in user_message for word in ["to'lov","tolov", "payment", "karta", "naqd", "pul o'tkazma"]):
             reply = (
                 "💳 To‘lov usullari:\n"
                 "- Naqd pul\n"
