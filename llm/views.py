@@ -237,9 +237,23 @@ class GymLLMView(APIView):
 
         else:
             reply = (
-                "😊 Men sizga yordam bera olaman.\n"
-                "Abonement narxlari, xizmatlar, murabbiylar yoki ish vaqti haqida bilishni xohlaysizmi?"
+                """👋 Assalamu alaykum! Men — PowerFit Gym’ning virtual yordamchisiman.
+                                Sizga faqat quyidagi savollarda yordam bera olaman:
+                                - 📋 Abonement narxlari va chegirmalar
+                                - 🏋️‍♂️ Xizmatlar va mavjud jihozlar
+                                - 👨‍🏫 Murabbiylar va mashg‘ulot jadvali
+                                - 🕒 Ish vaqti va band qilish
+                                - 📍 Manzil va kontakt ma’lumotlar
+                                - 🧒 Bolalar mashg‘ulotlari
+                                - 💳 To‘lov usullari
+                                - 🏊 Sauna, hovuz va VIP xizmatlar
+    
+                                ❓ Siz menga istalgan paytda  abonement , ** murabbiy **, ** manzil **, ** xizmat **, ** chegirma ** yoki boshqa kalit so‘zlar bilan so‘rashingiz mumkin.
+    
+                                Men sizga tez va aniq javob berishga harakat qilaman.🙂"""
+
             )
+
 
         return Response({"reply": reply}, status=status.HTTP_200_OK)
 
