@@ -111,7 +111,7 @@ class GymLLMView(APIView):
             )
 
 
-        elif any(word in user_message for word in ["manzil", "qayerda", "address", "location"]):
+        elif any(word in user_message for word in ["manzil", "qayerda", "address", "location", "adress", "qayer"]):
             reply = (
                 "📍 Bizning manzil:\n"
                 "Toshkent shahri, Chilonzor 10-mavze, PowerFit Plaza 2-qavat.\n\n"
@@ -119,7 +119,7 @@ class GymLLMView(APIView):
                 "🚗 Avtomobillar uchun bepul to‘xtash joyi mavjud."
             )
 
-        elif any(word in user_message for word in ["kontakt", "telefon", "raqam", "aloqa", "phone", "bog'lanish", "boglanish"]):
+        elif any(word in user_message for word in ["kontakt", "telefon", "raqam", "aloqa", "phone", "bog'lanish", "boglanish", "kontak"]):
             reply = (
                 "📞 Biz bilan bog‘lanish uchun:\n"
                 "Telefon: +998 90 123 45 67\n"
