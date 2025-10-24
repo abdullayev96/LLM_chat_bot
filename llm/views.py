@@ -79,6 +79,28 @@ class GymLLMView(APIView):
                 "❓ Qaysi xizmat sizni qiziqtiryapti?"
             )
 
+
+        elif any(word in user_message for word in [
+            "loyiha", "loyihalar", "portfolio", "namuna", "ishlagan", "project", "examples", "botlar", "saytlar"
+        ]):
+            reply = (
+                "🧩 Logical Team Group tomonidan amalga oshirilgan loyihalar:\n\n"
+                "🌐 **Veb-saytlar va Crm Tizmlar:**\n"
+                "- mockmaga.uz\n"
+                "- al-tsuull.uz\n"
+                "- venompro.de\n"
+                "- tedboard.uz\n"
+                "- ansorsafety.uz\n"
+                "- breez.uz\n"
+                "- alpertungatour.uz\n\n"
+                "🤖 **Telegram botlar:**\n"
+                "- [@Turonbank_Mahalla_bankiri_bot](https://t.me/Turonbank_Mahalla_bankiri_bot)\n"
+                "- [@Bobo_Motors_Service_bot](https://t.me/Bobo_Motors_Service_bot)\n"
+                "- [@turonbank_baholash_bot](https://t.me/turonbank_baholash_bot)\n\n"
+                "💼 Bu loyihalar orqali bizning tajribamizni va sifat darajamizni ko‘rishingiz mumkin.\n"
+                "Siz ham o‘zingizga o‘xshash loyiha xohlaysizmi? 😉"
+            )
+
         elif any(word in user_message for word in ["narx", "price", "pul", "xizmat narxi", "qancha", "chegirma"]):
             reply = (
                 "💰 Narxlar loyiha murakkabligiga qarab belgilanadi.\n\n"
