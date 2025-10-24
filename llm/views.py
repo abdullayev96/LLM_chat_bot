@@ -105,10 +105,10 @@ class GymLLMView(APIView):
             reply = (
                 "💰 Narxlar loyiha murakkabligiga qarab belgilanadi.\n\n"
                 "Masalan:\n"
-                "- Telegram bot: 800 000 so‘mdan\n"
-                "- Veb-sayt: 3 000 000 so‘mdan\n"
-                "- Target reklama: 1 000 000 so‘mdan\n"
-                "- CRM tizimi: 8 000 000 so‘mdan\n\n"
+                "- Telegram bot: 800 000 ++ so‘mdan \n"
+                "- Veb-sayt: 3 000 000 ++ so‘mdan ++\n"
+                "- Target reklama: 1 000 000 ++ so‘mdan\n"
+                "- CRM tizimi: 8 000 000 ++ so‘mdan\n\n"
                 "🎯 Sizning loyihangizni qisqacha yozing — biz aniq narxni aytamiz."
             )
 
@@ -123,21 +123,33 @@ class GymLLMView(APIView):
         elif any(word in user_message for word in ["vaqt", "hours", "ish vaqti", "qachon ochiq", "ishlaysizmi"]):
             reply = (
                 "🕒 Logical Team Group ish vaqti:\n"
-                "Dushanba–Shanba: 09:00 – 19:00\n"
+                "Dushanba–Shanba: 09:00 – 23:00\n"
                 "Yakshanba: dam kuni\n\n"
                 "❓ Qaysi kuni siz bilan bog‘lanishimiz qulay bo‘ladi?"
             )
 
         elif any(word in user_message for word in
-                 ["salom", "hi", "hello", "assalom", "qanday narsa bu", "vazifasi nima"]):
+                 ["salom", "hi", "hello", "assalom alaykum", "qanday narsa bu", "vazifasi nima", "nima bu", "qanday ishlaydi"]):
             reply = (
                 "👋 Assalamu alaykum! Men — Logical Team Group’ning virtual yordamchisiman.\n\n"
-                "Biznesingiz uchun quyidagi sohalarda yordam bera olamiz:\n"
-                "- 🌐 Veb-sayt va Telegram bot yaratish\n"
-                "- 🎯 Target reklama va SMM xizmatlari\n"
-                "- 🔰 CRM tizimi va avtomatlashtirish\n"
-                "- 🎨 Dizayn, brending va DMM xizmatlari\n\n"
-                "❓ Siz qaysi xizmat haqida bilmoqchisiz? Masalan, yozing: *veb-sayt*, *bot*, *reklama* yoki *narx*"
+                "Biz taqdim etamiz:\n"
+                "🎯 Target reklama\n"
+                "🌐 Veb-saytlar\n"
+                "🤖 Telegram botlar\n"
+                "🔰 CRM tizimlari\n"
+                "🎨 Dizayn va brending\n"
+                "📱 Mobil ilovalar\n"
+                "🗣 SMM xizmatlari\n"
+                "⚛️ AI yechimlari\n"
+                "📢 DMM (Dublyaj Media Marketing)\n\n"
+                "Nega aynan biz?\n"
+                "✅ Tajribali va kreativ jamoa\n"
+                "✅ Tezkor, sifatli va professional xizmat\n"
+                "✅ Har bir loyiha — biz uchun alohida e’tibor!\n\n"
+                "Bog‘lanish uchun:\n"
+                "Telegram: @Baymax9663\n"
+                "Telefon: +998 90 586 22 36\n\n"
+                "Logical Team Group — G‘oya sizdan, texnik yechim bizdan! 🚀"
             )
 
         elif any(word in user_message for word in ["manzil", "qayerda", "address", "location", "adres"]):
