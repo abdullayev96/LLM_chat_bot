@@ -167,9 +167,4 @@ MEDIA_ROOT = '/var/www/llm_chat_bot/media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
-######  good12
-
-
-#### change today
+######  1/7/2025
